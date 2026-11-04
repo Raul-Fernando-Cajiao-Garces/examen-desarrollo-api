@@ -105,16 +105,16 @@ Demostración de datos guardados y consultados directamente en `psql`:
 ![Persistencia SQL](docs/evidencias/persistencia-sql.png)
 
 ```text
- id |        title         |         author         |     isbn      | copies 
-----+----------------------+------------------------+---------------+--------
-  1 | Cien años de soledad | Gabriel García Márquez | 9780307474728 |      3
-  2 | Clean Architecture   | Robert C. Martin       | 9780134494166 |      5
+ id |                    title                     |   author    |     isbn      | copies 
+----+----------------------------------------------+-------------+---------------+--------
+  1 | 20 Pasos para ser un Desarrollador Senior    | Raúl Cajiao | 9781234784587 |      4
+  2 | Por qué saber usar IA no te hace programador | Raúl Cajiao | 9784895438924 |      2
 (2 filas)
 
- id |     name      |          email           | membership_type | active 
-----+---------------+--------------------------+-----------------+--------
-  1 | Lucía Mendoza | lucia.mendoza@correo.com | estudiante      | t
-  2 | Carlos Ruiz   | carlos.ruiz@correo.com   | docente         | t
+ id |     name      |            email            | membership_type | active 
+----+---------------+-----------------------------+-----------------+--------
+  1 | Raúl Fernando | raulcajiao@uisrael.edu.ec   | estudiante      | t
+  2 | Cajiao Garcés | cajiaogarces@uisrael.edu.ec | docente         | t
 (2 filas)
 ```
 
