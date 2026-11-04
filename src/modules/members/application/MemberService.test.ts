@@ -8,8 +8,8 @@ describe('MemberService Use Cases (with InMemoryMemberRepository)', () => {
   let service: MemberService;
 
   const initialMembers: Member[] = [
-    { id: 1, name: 'Lucía Mendoza', email: 'lucia.mendoza@correo.com', membershipType: 'estudiante', active: true },
-    { id: 2, name: 'Carlos Ruiz', email: 'carlos.ruiz@correo.com', membershipType: 'docente', active: true },
+    { id: 1, name: 'Raúl Fernando', email: 'raulcajiao@uisrael.edu.ec', membershipType: 'estudiante', active: true },
+    { id: 2, name: 'Cajiao Garcés', email: 'cajiaogarces@uisrael.edu.ec', membershipType: 'docente', active: true },
   ];
 
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('MemberService Use Cases (with InMemoryMemberRepository)', () => {
     it('should return all members', async () => {
       const members = await service.list();
       expect(members).toHaveLength(2);
-      expect(members[0].name).toBe('Lucía Mendoza');
+      expect(members[0].name).toBe('Raúl Fernando');
     });
   });
 
@@ -29,7 +29,7 @@ describe('MemberService Use Cases (with InMemoryMemberRepository)', () => {
     it('should return the member when it exists', async () => {
       const member = await service.getById(1);
       expect(member.id).toBe(1);
-      expect(member.name).toBe('Lucía Mendoza');
+      expect(member.name).toBe('Raúl Fernando');
     });
 
     it('should throw NotFoundError when member does not exist', async () => {

@@ -39,8 +39,8 @@ describe('PostgresMemberRepository Integration Tests (Base de Datos Real)', () =
   // 2. Guardar
   it('2. Guardar: should save a new member and return it with generated id', async () => {
     const newMember = {
-      name: 'Lucía Mendoza',
-      email: 'lucia.mendoza@correo.com',
+      name: 'Raúl Fernando',
+      email: 'raulcajiao@uisrael.edu.ec',
       membershipType: 'estudiante' as const,
       active: true,
     };

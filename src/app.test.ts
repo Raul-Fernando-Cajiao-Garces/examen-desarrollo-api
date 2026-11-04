@@ -13,7 +13,7 @@ describe('API HTTP Endpoints (Punto de Control 1)', () => {
     it('GET /books/:id should return 200 for existing book', async () => {
       const response = await request(app).get('/books/1');
       expect(response.status).toBe(200);
-      expect(response.body).toHaveProperty('title', 'Cien años de soledad');
+      expect(response.body).toHaveProperty('title', '20 Pasos para ser un Desarrollador Senior');
     });
 
     it('GET /books/:id should return 404 for non-existing book', async () => {
@@ -53,7 +53,7 @@ describe('API HTTP Endpoints (Punto de Control 1)', () => {
     it('PATCH /books/:id/borrow should decrement copies and return 200', async () => {
       const response = await request(app).patch('/books/1/borrow');
       expect(response.status).toBe(200);
-      expect(response.body.copies).toBe(2);
+      expect(response.body.copies).toBe(3);
     });
   });
 
@@ -68,7 +68,7 @@ describe('API HTTP Endpoints (Punto de Control 1)', () => {
     it('GET /members/:id should return 200 for existing member', async () => {
       const response = await request(app).get('/members/1');
       expect(response.status).toBe(200);
-      expect(response.body).toHaveProperty('name', 'Lucía Mendoza');
+      expect(response.body).toHaveProperty('name', 'Raúl Fernando');
     });
 
     it('GET /members/:id should return 404 for non-existing member', async () => {

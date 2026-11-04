@@ -18,13 +18,13 @@ app.use(express.json());
 
 // Datos iniciales de prueba para modo en memoria
 const sampleBooks = [
-  { id: 1, title: 'Cien años de soledad', author: 'Gabriel García Márquez', isbn: '9780307474728', copies: 3 },
-  { id: 2, title: 'Don Quijote de la Mancha', author: 'Miguel de Cervantes', isbn: '9788424116286', copies: 1 },
+  { id: 1, title: '20 Pasos para ser un Desarrollador Senior', author: 'Raúl Cajiao', isbn: '9781234784587', copies: 4 },
+  { id: 2, title: 'Por qué saber usar IA no te hace programador', author: 'Raúl Cajiao', isbn: '9784895438924', copies: 2 },
 ];
 
 const sampleMembers = [
-  { id: 1, name: 'Lucía Mendoza', email: 'lucia.mendoza@correo.com', membershipType: 'estudiante' as const, active: true },
-  { id: 2, name: 'Carlos Ruiz', email: 'carlos.ruiz@correo.com', membershipType: 'docente' as const, active: true },
+  { id: 1, name: 'Raúl Fernando', email: 'raulcajiao@uisrael.edu.ec', membershipType: 'estudiante' as const, active: true },
+  { id: 2, name: 'Cajiao Garcés', email: 'cajiaogarces@uisrael.edu.ec', membershipType: 'docente' as const, active: true },
 ];
 
 // Fábrica del repositorio de Libros (Variante A)

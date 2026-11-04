@@ -142,7 +142,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"\",\n  \"author\": \"Gabriel García Márquez\",\n  \"isbn\": \"123\",\n  \"copies\": -1\n}"
+              "raw": "{\n  \"title\": \"\",\n  \"author\": \"Raúl Cajiao\",\n  \"isbn\": \"123\",\n  \"copies\": -1\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/books",

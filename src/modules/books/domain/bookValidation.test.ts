@@ -4,19 +4,19 @@ import { parseNewBook } from './bookValidation';
 describe('Book Domain Validation (parseNewBook)', () => {
   it('should successfully validate a correct book with 13 digits ISBN', () => {
     const rawBook = {
-      title: 'Cien años de soledad',
-      author: 'Gabriel García Márquez',
-      isbn: '978-0-307-47472-8',
-      copies: 3,
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '978-1-234-78458-7',
+      copies: 4,
     };
 
     const validated = parseNewBook(rawBook);
 
     expect(validated).toEqual({
-      title: 'Cien años de soledad',
-      author: 'Gabriel García Márquez',
-      isbn: '978-0-307-47472-8',
-      copies: 3,
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '978-1-234-78458-7',
+      copies: 4,
     });
   });
 

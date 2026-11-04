@@ -39,10 +39,10 @@ describe('PostgresBookRepository Integration Tests (Base de Datos Real)', () => 
   // 2. Guardar
   it('2. Guardar: should save a new book and return it with generated id', async () => {
     const newBook = {
-      title: 'Cien años de soledad',
-      author: 'Gabriel García Márquez',
-      isbn: '9780307474728',
-      copies: 3,
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
+      copies: 4,
     };
 
     const saved = await repository.save(newBook);
@@ -51,7 +51,7 @@ describe('PostgresBookRepository Integration Tests (Base de Datos Real)', () => 
     expect(saved.title).toBe(newBook.title);
     expect(saved.author).toBe(newBook.author);
     expect(saved.isbn).toBe(newBook.isbn);
-    expect(saved.copies).toBe(3);
+    expect(saved.copies).toBe(4);
   });
 
   // 3. Listar
