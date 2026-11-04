@@ -1,12 +1,15 @@
 import express from 'express';
 import { createBookRouter } from './modules/books/adapters/http/bookRoutes';
 import { InMemoryBookRepository } from './modules/books/adapters/persistence/InMemoryBookRepository';
+import { PostgresBookRepository } from './modules/books/adapters/persistence/PostgresBookRepository';
 import { BookService } from './modules/books/application/BookService';
 import { BookRepository } from './modules/books/ports/BookRepository';
 import { createMemberRouter } from './modules/members/adapters/http/memberRoutes';
 import { InMemoryMemberRepository } from './modules/members/adapters/persistence/InMemoryMemberRepository';
+import { PostgresMemberRepository } from './modules/members/adapters/persistence/PostgresMemberRepository';
 import { MemberService } from './modules/members/application/MemberService';
 import { MemberRepository } from './modules/members/ports/MemberRepository';
+import { createPostgresPool } from './shared/database/postgresPool';
 import { errorHandler, notFoundHandler } from './shared/httpErrorHandlers';
 
 const app = express();
@@ -26,7 +29,17 @@ const sampleMembers = [
 
 // Fábrica del repositorio de Libros (Variante A)
 export const createBookRepository = (): { name: string; repository: BookRepository } => {
-  // En memoria por defecto si no existe variable de base de datos
+  const databaseUrl = process.env.DATABASE_URL;
+  const adapter = process.env.BOOKS_ADAPTER;
+
+  if (databaseUrl && adapter === 'sql') {
+    const pool = createPostgresPool(databaseUrl);
+    return {
+      name: 'PostgreSQL with pg',
+      repository: new PostgresBookRepository(pool),
+    };
+  }
+
   return {
     name: 'in memory',
     repository: new InMemoryBookRepository(sampleBooks),
@@ -35,7 +48,17 @@ export const createBookRepository = (): { name: string; repository: BookReposito
 
 // Fábrica del repositorio de Socios (Variante B)
 export const createMemberRepository = (): { name: string; repository: MemberRepository } => {
-  // En memoria por defecto si no existe variable de base de datos
+  const databaseUrl = process.env.DATABASE_URL;
+  const adapter = process.env.MEMBERS_ADAPTER;
+
+  if (databaseUrl && adapter === 'sql') {
+    const pool = createPostgresPool(databaseUrl);
+    return {
+      name: 'PostgreSQL with pg',
+      repository: new PostgresMemberRepository(pool),
+    };
+  }
+
   return {
     name: 'in memory',
     repository: new InMemoryMemberRepository(sampleMembers),
