@@ -9,8 +9,8 @@ describe('BookService Use Cases (with InMemoryBookRepository)', () => {
   let service: BookService;
 
   const initialBooks: Book[] = [
-    { id: 1, title: 'Clean Code', author: 'Robert C. Martin', isbn: '9780132350884', copies: 2 },
-    { id: 2, title: 'The Pragmatic Programmer', author: 'Andy Hunt', isbn: '9780201616224', copies: 0 },
+    { id: 1, title: '20 Pasos para ser un Desarrollador Senior', author: 'Raúl Cajiao', isbn: '9781234784587', copies: 4 },
+    { id: 2, title: 'Por qué saber usar IA no te hace programador', author: 'Raúl Cajiao', isbn: '9784895438924', copies: 0 },
   ];
 
   beforeEach(() => {
@@ -22,7 +22,8 @@ describe('BookService Use Cases (with InMemoryBookRepository)', () => {
     it('should return all books', async () => {
       const books = await service.list();
       expect(books).toHaveLength(2);
-      expect(books[0].title).toBe('Clean Code');
+      expect(books[0].title).toBe('20 Pasos para ser un Desarrollador Senior');
+      expect(books[1].title).toBe('Por qué saber usar IA no te hace programador');
     });
   });
 
@@ -30,7 +31,7 @@ describe('BookService Use Cases (with InMemoryBookRepository)', () => {
     it('should return the book when it exists', async () => {
       const book = await service.getById(1);
       expect(book.id).toBe(1);
-      expect(book.title).toBe('Clean Code');
+      expect(book.title).toBe('20 Pasos para ser un Desarrollador Senior');
     });
 
     it('should throw NotFoundError when book does not exist', async () => {
@@ -42,14 +43,14 @@ describe('BookService Use Cases (with InMemoryBookRepository)', () => {
   describe('create', () => {
     it('should persist and return a new book with generated id', async () => {
       const created = await service.create({
-        title: 'Refactoring',
-        author: 'Martin Fowler',
-        isbn: '9780201485677',
-        copies: 5,
+        title: 'Por qué saber usar IA no te hace programador',
+        author: 'Raúl Cajiao',
+        isbn: '9784895438924',
+        copies: 2,
       });
 
       expect(created.id).toBe(3);
-      expect(created.title).toBe('Refactoring');
+      expect(created.title).toBe('Por qué saber usar IA no te hace programador');
 
       const all = await service.list();
       expect(all).toHaveLength(3);
@@ -59,10 +60,10 @@ describe('BookService Use Cases (with InMemoryBookRepository)', () => {
   describe('borrow (extension)', () => {
     it('should decrement copies when available', async () => {
       const borrowed = await service.borrow(1);
-      expect(borrowed.copies).toBe(1);
+      expect(borrowed.copies).toBe(3);
 
       const after = await service.getById(1);
-      expect(after.copies).toBe(1);
+      expect(after.copies).toBe(3);
     });
 
     it('should throw DomainError when no copies are left', async () => {

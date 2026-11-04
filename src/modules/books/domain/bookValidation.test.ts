@@ -20,46 +20,47 @@ describe('Book Domain Validation (parseNewBook)', () => {
     });
   });
 
-  it('should successfully validate a correct book with 10 digits ISBN and 0 copies', () => {
+  it('should successfully validate a correct book with second example and 0 copies', () => {
     const rawBook = {
-      title: 'Clean Architecture',
-      author: 'Robert C. Martin',
-      isbn: '0134494164',
+      title: 'Por qué saber usar IA no te hace programador',
+      author: 'Raúl Cajiao',
+      isbn: '9784895438924',
       copies: 0,
     };
 
     const validated = parseNewBook(rawBook);
 
     expect(validated.copies).toBe(0);
-    expect(validated.isbn).toBe('0134494164');
+    expect(validated.title).toBe('Por qué saber usar IA no te hace programador');
+    expect(validated.isbn).toBe('9784895438924');
   });
 
   it('should throw DomainError when title is missing or empty', () => {
     expect(() => parseNewBook({
-      author: 'Autor',
-      isbn: '9780307474728',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
       copies: 1,
     })).toThrow(DomainError);
 
     expect(() => parseNewBook({
       title: '   ',
-      author: 'Autor',
-      isbn: '9780307474728',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
       copies: 1,
     })).toThrow('El título es obligatorio');
   });
 
   it('should throw DomainError when author is missing or empty', () => {
     expect(() => parseNewBook({
-      title: 'Título Válido',
-      isbn: '9780307474728',
+      title: '20 Pasos para ser un Desarrollador Senior',
+      isbn: '9781234784587',
       copies: 1,
     })).toThrow(DomainError);
 
     expect(() => parseNewBook({
-      title: 'Título Válido',
+      title: '20 Pasos para ser un Desarrollador Senior',
       author: '  ',
-      isbn: '9780307474728',
+      isbn: '9781234784587',
       copies: 1,
     })).toThrow('El autor es obligatorio');
   });
@@ -67,16 +68,16 @@ describe('Book Domain Validation (parseNewBook)', () => {
   it('should throw DomainError when ISBN is invalid', () => {
     // Menos de 10 dígitos
     expect(() => parseNewBook({
-      title: 'Libro',
-      author: 'Autor',
+      title: 'Por qué saber usar IA no te hace programador',
+      author: 'Raúl Cajiao',
       isbn: '12345',
       copies: 1,
     })).toThrow('El ISBN no es válido');
 
     // Caracteres inválidos
     expect(() => parseNewBook({
-      title: 'Libro',
-      author: 'Autor',
+      title: 'Por qué saber usar IA no te hace programador',
+      author: 'Raúl Cajiao',
       isbn: '978-0-307-ABCD-8',
       copies: 1,
     })).toThrow('El ISBN no es válido');
@@ -84,16 +85,16 @@ describe('Book Domain Validation (parseNewBook)', () => {
 
   it('should throw DomainError when copies is negative or not an integer', () => {
     expect(() => parseNewBook({
-      title: 'Libro',
-      author: 'Autor',
-      isbn: '9780307474728',
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
       copies: -1,
     })).toThrow('Los ejemplares deben ser un número igual o mayor que 0');
 
     expect(() => parseNewBook({
-      title: 'Libro',
-      author: 'Autor',
-      isbn: '9780307474728',
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
       copies: 2.5,
     })).toThrow('Los ejemplares deben ser un número igual o mayor que 0');
   });

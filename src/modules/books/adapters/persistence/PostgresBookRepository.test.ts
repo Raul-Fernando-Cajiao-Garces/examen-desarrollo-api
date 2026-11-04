@@ -57,37 +57,38 @@ describe('PostgresBookRepository Integration Tests (Base de Datos Real)', () => 
   // 3. Listar
   it('3. Listar: should return all books saved in database', async () => {
     await repository.save({
-      title: 'Libro 1',
-      author: 'Autor 1',
-      isbn: '9780111111111',
-      copies: 5,
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
+      copies: 4,
     });
     await repository.save({
-      title: 'Libro 2',
-      author: 'Autor 2',
-      isbn: '9780222222222',
+      title: 'Por qué saber usar IA no te hace programador',
+      author: 'Raúl Cajiao',
+      isbn: '9784895438924',
       copies: 2,
     });
 
     const books = await repository.findAll();
     expect(books).toHaveLength(2);
-    expect(books[0].title).toBe('Libro 1');
-    expect(books[1].title).toBe('Libro 2');
+    expect(books[0].title).toBe('20 Pasos para ser un Desarrollador Senior');
+    expect(books[1].title).toBe('Por qué saber usar IA no te hace programador');
   });
 
   // 4. Buscar existente
   it('4. Buscar existente: should find book by id when it exists', async () => {
     const created = await repository.save({
-      title: 'Clean Architecture',
-      author: 'Robert C. Martin',
-      isbn: '9780134494166',
-      copies: 4,
+      title: 'Por qué saber usar IA no te hace programador',
+      author: 'Raúl Cajiao',
+      isbn: '9784895438924',
+      copies: 2,
     });
 
     const found = await repository.findById(created.id);
     expect(found).not.toBeNull();
     expect(found?.id).toBe(created.id);
-    expect(found?.title).toBe('Clean Architecture');
+    expect(found?.title).toBe('Por qué saber usar IA no te hace programador');
+    expect(found?.author).toBe('Raúl Cajiao');
   });
 
   // 5. Buscar inexistente
@@ -99,18 +100,18 @@ describe('PostgresBookRepository Integration Tests (Base de Datos Real)', () => 
   // Caso adicional: Actualización de ejemplares (Ampliación)
   it('Extra. updateCopies: should update copies correctly', async () => {
     const created = await repository.save({
-      title: 'Refactoring',
-      author: 'Martin Fowler',
-      isbn: '9780201485677',
-      copies: 3,
+      title: '20 Pasos para ser un Desarrollador Senior',
+      author: 'Raúl Cajiao',
+      isbn: '9781234784587',
+      copies: 4,
     });
 
-    const updated = await repository.updateCopies(created.id, 2);
+    const updated = await repository.updateCopies(created.id, 3);
     expect(updated).not.toBeNull();
-    expect(updated?.copies).toBe(2);
+    expect(updated?.copies).toBe(3);
 
     const check = await repository.findById(created.id);
-    expect(check?.copies).toBe(2);
+    expect(check?.copies).toBe(3);
   });
 
   // Protección: verificación de que la regla de seguridad funciona

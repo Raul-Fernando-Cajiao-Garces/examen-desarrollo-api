@@ -57,29 +57,29 @@ describe('PostgresMemberRepository Integration Tests (Base de Datos Real)', () =
   // 3. Listar
   it('3. Listar: should return all members saved in database', async () => {
     await repository.save({
-      name: 'Socio 1',
-      email: 'socio1@correo.com',
+      name: 'Raúl Fernando',
+      email: 'raulcajiao@uisrael.edu.ec',
       membershipType: 'estudiante',
       active: true,
     });
     await repository.save({
-      name: 'Socio 2',
-      email: 'socio2@correo.com',
+      name: 'Cajiao Garcés',
+      email: 'cajiaogarces@uisrael.edu.ec',
       membershipType: 'docente',
       active: true,
     });
 
     const members = await repository.findAll();
     expect(members).toHaveLength(2);
-    expect(members[0].name).toBe('Socio 1');
-    expect(members[1].name).toBe('Socio 2');
+    expect(members[0].name).toBe('Raúl Fernando');
+    expect(members[1].name).toBe('Cajiao Garcés');
   });
 
   // 4. Buscar existente
   it('4. Buscar existente: should find member by id when it exists', async () => {
     const created = await repository.save({
-      name: 'Carlos Ruiz',
-      email: 'carlos.ruiz@correo.com',
+      name: 'Cajiao Garcés',
+      email: 'cajiaogarces@uisrael.edu.ec',
       membershipType: 'docente',
       active: true,
     });
@@ -87,7 +87,7 @@ describe('PostgresMemberRepository Integration Tests (Base de Datos Real)', () =
     const found = await repository.findById(created.id);
     expect(found).not.toBeNull();
     expect(found?.id).toBe(created.id);
-    expect(found?.name).toBe('Carlos Ruiz');
+    expect(found?.name).toBe('Cajiao Garcés');
     expect(found?.membershipType).toBe('docente');
   });
 
@@ -100,9 +100,9 @@ describe('PostgresMemberRepository Integration Tests (Base de Datos Real)', () =
   // Caso adicional: Desactivación de socio (Ampliación)
   it('Extra. updateActive: should update active status correctly', async () => {
     const created = await repository.save({
-      name: 'Elena Ramos',
-      email: 'elena.ramos@correo.com',
-      membershipType: 'externo',
+      name: 'Raúl Fernando',
+      email: 'raulcajiao@uisrael.edu.ec',
+      membershipType: 'estudiante',
       active: true,
     });
 

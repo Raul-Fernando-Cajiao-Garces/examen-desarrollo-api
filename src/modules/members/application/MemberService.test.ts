@@ -22,6 +22,7 @@ describe('MemberService Use Cases (with InMemoryMemberRepository)', () => {
       const members = await service.list();
       expect(members).toHaveLength(2);
       expect(members[0].name).toBe('Raúl Fernando');
+      expect(members[1].name).toBe('Cajiao Garcés');
     });
   });
 
@@ -41,14 +42,14 @@ describe('MemberService Use Cases (with InMemoryMemberRepository)', () => {
   describe('create', () => {
     it('should persist and return a new member with generated id', async () => {
       const created = await service.create({
-        name: 'Ana Gómez',
-        email: 'ana.gomez@correo.com',
-        membershipType: 'externo',
+        name: 'Cajiao Garcés',
+        email: 'cajiaogarces@uisrael.edu.ec',
+        membershipType: 'docente',
         active: true,
       });
 
       expect(created.id).toBe(3);
-      expect(created.name).toBe('Ana Gómez');
+      expect(created.name).toBe('Cajiao Garcés');
 
       const all = await service.list();
       expect(all).toHaveLength(3);

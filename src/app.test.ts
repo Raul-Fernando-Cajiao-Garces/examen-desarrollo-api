@@ -24,10 +24,10 @@ describe('API HTTP Endpoints (Punto de Control 1)', () => {
 
     it('POST /books should return 201 and created book', async () => {
       const newBook = {
-        title: 'El Aleph',
-        author: 'Jorge Luis Borges',
-        isbn: '9789875666481',
-        copies: 5,
+        title: 'Por qué saber usar IA no te hace programador',
+        author: 'Raúl Cajiao',
+        isbn: '9784895438924',
+        copies: 2,
       };
 
       const response = await request(app).post('/books').send(newBook);
@@ -79,9 +79,9 @@ describe('API HTTP Endpoints (Punto de Control 1)', () => {
 
     it('POST /members should return 201 and created member', async () => {
       const newMember = {
-        name: 'Andrés Paredes',
-        email: 'andres.paredes@correo.com',
-        membershipType: 'externo',
+        name: 'Cajiao Garcés',
+        email: 'cajiaogarces@uisrael.edu.ec',
+        membershipType: 'docente',
       };
 
       const response = await request(app).post('/members').send(newMember);
