@@ -29,7 +29,7 @@
                   "pm.test('Retorna el recurso con id', function () {",
                   "    var json = pm.response.json();",
                   "    pm.expect(json).to.have.property('id');",
-                  "    pm.expect(json.title).to.eql('Cien años de soledad');",
+                  "    pm.expect(json.title).to.eql('20 Pasos para ser un Desarrollador Senior');",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -46,7 +46,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Cien años de soledad\",\n  \"author\": \"Gabriel García Márquez\",\n  \"isbn\": \"9780307474728\",\n  \"copies\": 3\n}"
+              "raw": "{\n  \"title\": \"20 Pasos para ser un Desarrollador Senior\",\n  \"author\": \"Raúl Cajiao\",\n  \"isbn\": \"9781234784587\",\n  \"copies\": 4\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/books",
@@ -227,7 +227,7 @@
                   "pm.test('Retorna el socio con id y active=true', function () {",
                   "    var json = pm.response.json();",
                   "    pm.expect(json).to.have.property('id');",
-                  "    pm.expect(json.name).to.eql('Lucía Mendoza');",
+                  "    pm.expect(json.name).to.eql('Raúl Fernando');",
                   "    pm.expect(json.active).to.be.true;",
                   "});"
                 ],
@@ -245,7 +245,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Lucía Mendoza\",\n  \"email\": \"lucia.mendoza@correo.com\",\n  \"membershipType\": \"estudiante\"\n}"
+              "raw": "{\n  \"name\": \"Raúl Fernando\",\n  \"email\": \"raulcajiao@uisrael.edu.ec\",\n  \"membershipType\": \"estudiante\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/members",

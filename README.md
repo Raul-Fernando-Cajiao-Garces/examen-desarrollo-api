@@ -42,8 +42,8 @@ Se implementan las variantes solicitadas con cobertura completa:
 2. **Variables de entorno:**  
    Configuradas en `.env` (referencia en `.env.example`):
    ```env
-   DATABASE_URL=postgresql://postgres:Retr0x1990@localhost:5432/examen_dev
-   TEST_DATABASE_URL=postgresql://postgres:Retr0x1990@localhost:5432/examen_test
+   DATABASE_URL=postgresql://postgres:root@localhost:5432/examen_dev
+   TEST_DATABASE_URL=postgresql://postgres:root@localhost:5432/examen_test
    PORT=3000
    BOOKS_ADAPTER=sql
    MEMBERS_ADAPTER=sql

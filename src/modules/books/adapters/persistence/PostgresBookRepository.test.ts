@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Pool } from 'pg';
 import { createPostgresPool } from '../../../../shared/database/postgresPool';
 import { PostgresBookRepository } from './PostgresBookRepository';
@@ -6,8 +7,8 @@ describe('PostgresBookRepository Integration Tests (Base de Datos Real)', () => 
   let pool: Pool;
   let repository: PostgresBookRepository;
 
-  const testDbUrl = process.env.TEST_DATABASE_URL || 'postgresql://postgres:Retr0x1990@localhost:5432/examen_test';
-  const devDbUrl = process.env.DATABASE_URL || 'postgresql://postgres:Retr0x1990@localhost:5432/examen_dev';
+  const testDbUrl = process.env.TEST_DATABASE_URL || 'postgresql://postgres:root@localhost:5432/examen_test';
+  const devDbUrl = process.env.DATABASE_URL || 'postgresql://postgres:root@localhost:5432/examen_dev';
 
   beforeAll(async () => {
     // REGLA DE SEGURIDAD OBLIGATORIA:
